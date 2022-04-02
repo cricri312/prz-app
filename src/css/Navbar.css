@@ -1,0 +1,11 @@
+.navbar{
+  text-align: center;
+  background-color: #a5b4cf
+}
+img{
+  aspect-ratio: attr(width) / attr(height);
+}
+.prz-color{
+  color: greenyellow;
+}
+
