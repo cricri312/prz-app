@@ -1,7 +1,7 @@
 .navbar{
   text-align: center;
-  background-color: #a5b4cf
-}
+  background-color: #6a5617;
+  }
 img{
   aspect-ratio: attr(width) / attr(height);
 }

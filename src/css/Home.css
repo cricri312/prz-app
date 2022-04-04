@@ -1,0 +1,8 @@
+.landing-text h1{
+    font-weight: 700;
+}
+img{
+    aspect-ratio: attr(width) / attr(height);
+    border-radius: 33px;
+    padding: 1%;
+  }
