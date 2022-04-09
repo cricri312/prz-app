@@ -13,10 +13,6 @@ class Navigation extends Component {
           <Nav className="ml-auto" >
             <Nav.Link className="text-dark " href='/mqtt'>MQTT</Nav.Link>
             <Nav.Link className="text-dark" href='/chart'>CHART</Nav.Link>
-            {/*
-            <Nav.Link className="prz-color" href='/about'>ABOUT</Nav.Link>
-            <Nav.Link className="prz-color" href='/contact'>CONTACT</Nav.Link>
-            <Nav.Link className="prz-color" href='/NFT'>NFT</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

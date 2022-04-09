@@ -9,11 +9,6 @@ const Routes = (props) => {
             <Route exact path="/" component={Home}/> 
             <Route path="/mqtt" component={() => <Mqtt />}/>  
             <Route path='/chart' component={Chart}/>  
-            {/* 
-            <Route path='/team' component={Team}/>   
-            <Route path='/contact' component={Contact}/>  
-            <Route path='/about' component={About}/>
-            <Route path='/NFT' component={NFT}/>                       */}
         </Switch>
       );
     
