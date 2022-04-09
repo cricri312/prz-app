@@ -15,7 +15,7 @@ var client;
 class Mqtt extends Component {
 
   clientMount() {
-    client = mqtt.connect('mqtts://srv2.januszpol.pl:2001', options)
+    client = mqtt.connect('ws://srv2.januszpol.pl:2001', options)
   }
 
 
