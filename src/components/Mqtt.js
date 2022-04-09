@@ -8,15 +8,15 @@ const options = {
   connectTimeout: 4000,
   // Auth
   clientId: 'web',
-  //username: 'web',
-  //password: 'tEtjbBcBRpRk7YHrRCPyyeVKYp',
+  username: 'web',
+  password: 'tEtjbBcBRpRk7YHrRCPyyeVKYp',
   
 }
 var client;
 class Mqtt extends Component {
 // /test.mosquitto.org:8081
   clientMount() {
-    client = mqtt.connect('mqtt://test.mosquitto.org:8081', options)
+    client = mqtt.connect('mqtt://srv2.januszpol.pl:2000', options)
   }
 
 
