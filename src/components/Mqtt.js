@@ -3,7 +3,7 @@ var mqtt = require('mqtt');
 
 const options = {
   // Clean session
-  protocol: 'ws',
+  protocol: 'wss',
   clean: true,
   connectTimeout: 4000,
   // Auth
