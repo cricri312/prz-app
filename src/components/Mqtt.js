@@ -3,20 +3,20 @@ var mqtt = require('mqtt');
 
 const options = {
   // Clean session
- 
+ protocol: 'mqtts',
   clean: true,
   connectTimeout: 4000,
   // Auth
   clientId: 'web',
-  username: 'web',
-  password: 'tEtjbBcBRpRk7YHrRCPyyeVKYp',
+  //username: 'web',
+  //password: 'tEtjbBcBRpRk7YHrRCPyyeVKYp',
   
 }
 var client;
 class Mqtt extends Component {
 
   clientMount() {
-    client = mqtt.connect('ws://srv2.januszpol.pl:2001', options)
+    client = mqtt.connect('mqtt://test.mosquitto.org:8081', options)
   }
 
 
