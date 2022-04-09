@@ -15,7 +15,8 @@ var client;
 class Mqtt extends Component {
 // /test.mosquitto.org:8081
   clientMount() {
-    client = mqtt.connect('mqtt://srv2.januszpol.pl:2001', options)
+    //client = mqtt.connect('mqtt://srv2.januszpol.pl:2001', options)
+    client = mqtt.connect('wss://mqtt.januszpol.pl:443', options)
   }
 
 
