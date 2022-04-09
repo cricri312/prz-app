@@ -3,7 +3,7 @@ var mqtt = require('mqtt');
 
 const options = {
   // Clean session
-  protocol: 'wss',
+ 
   clean: true,
   connectTimeout: 4000,
   // Auth
@@ -15,7 +15,7 @@ var client;
 class Mqtt extends Component {
 
   clientMount() {
-    client = mqtt.connect('ws://srv2.januszpol.pl:2001', options)
+    client = mqtt.connect('mqtt://srv2.januszpol.pl:2001', options)
   }
 
 
