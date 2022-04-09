@@ -7,8 +7,8 @@ const options = {
   connectTimeout: 4000,
   // Auth
   clientId: 'web',
-  username: 'web',
-  password: 'tEtjbBcBRpRk7YHrRCPyyeVKYp',
+  username: process.env.MQTT_USERNAME,
+  password: process.env.MQTT_PASSWORD,
   
 }
 var client;
@@ -16,7 +16,7 @@ class Mqtt extends Component {
 // /test.mosquitto.org:8081
   clientMount() {
     //client = mqtt.connect('mqtt://srv2.januszpol.pl:2001', options)
-    client = mqtt.connect('wss://mqtt.januszpol.pl:443', options)
+    client = mqtt.connect(`wss://${MQTT_SERVER}:443`, options)
   }
 
 
