@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 var mqtt = require('mqtt');
-var options = {
-  protocol: 'mqtts',
-  // clientId uniquely identifies client
-  // choose any string you wish
-  clientId: 'b0908853'
-};
+
+const options = {
+  // Clean session
+  clean: true,
+  connectTimeout: 4000,
+  // Auth
+  clientId: 'web',
+  username: 'web',
+  password: 'tEtjbBcBRpRk7YHrRCPyyeVKYp',
+}
 var client;
 class Mqtt extends Component {
 
   clientMount() {
-    client = mqtt.connect(`mqtt://${this.state.conn_string}:${this.state.conn_port}`, options)
+    client = mqtt.connect('mqtt://srv2.januszpol.pl:2001', options)
   }
 
-  //test.mosquitto.org:8081
 
   loadMQTT = () => {
     this.clientMount();
@@ -48,8 +51,8 @@ class Mqtt extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      conn_string: '',
-      conn_port: '',
+      conn_string: 'srv2.januszpol.pl',
+      conn_port: '2001',
       topic: '',
       status_mqtt: true,
       message: '',
@@ -65,29 +68,12 @@ class Mqtt extends Component {
           <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
             <div className="justify-content-center">
               <div className="form-group">
-                <input type="text" className="form-control mb-1" placeholder="connection_string" onChange={event => {
-                  let x = event.target.value;
-                  this.setState({ conn_string: x })
-                }} />
-              </div>
-              <div className="form-group">
-                <input type="text" className="form-control" placeholder="connnection_port" onChange={event => {
-                  let x = event.target.value;
-                  this.setState({ conn_port: x })
-                }} />
-              </div>
-              <div className="form-group">
                 <input type="text" className="form-control mt-1" placeholder="topic_to_subscribe" onChange={event => {
                   let x = event.target.value;
                   this.setState({ topic: x })
                 }} />
               </div>
               <button className="btn btn-secondary mt-1" onClick={this.loadMQTT}>Connect to MQTT</button>
-              <div className="alert alert-light" role="alert">
-                connection = test.mosquitto.org
-                port = 8081
-                topic = presence
-              </div>
             </div>
           </div>
         </div>
