@@ -1,0 +1,31 @@
+.monitoring {
+    width: 100%;
+    padding: 2vh;
+    margin: auto;
+    background: whitesmoke;
+    display: grid;
+    grid-template-columns: auto 25% 25% 25%;
+    grid-template-rows: auto;
+    grid-column-gap: 1%;
+    grid-row-gap: 1%;
+    grid-template-areas:
+    "sidebar reviews rating sentiment"
+    "sidebar visitors visitors visitors";
+    border-radius: 1vh;
+  }
+  .sidebar {
+    grid-area: sidebar;
+    background:black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1vh;
+  }
+  
+  .sidebar >ul {
+    color:white;
+    display: flex;
+    flex-direction: column;
+    font-size: 1vh;
+    text-transform: uppercase;
+  }
