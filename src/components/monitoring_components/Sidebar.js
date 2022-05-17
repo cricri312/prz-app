@@ -18,7 +18,7 @@ class Sidebar extends Component {
     return (
       <div className='sidebar'>
         <ListGroup as="ul">
-          {this.props.stations.map((station, index) => <ListGroup.Item action key={index} onClick={() => this.showAlert(station.name)}>{station.name}</ListGroup.Item>)}
+          {this.props.stations.map((station, index) => <ListGroup.Item action key={index} onClick={() => this.showAlert(station.code_name)}>{station.name}</ListGroup.Item>)}
         </ListGroup>
 
       </div>

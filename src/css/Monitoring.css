@@ -3,7 +3,9 @@
     justify-content: center;
   }
   .chart {
-    background: rgb(70, 110, 211);
+    background: rgb(70, 110, 211) linear-gradient(white,rgb(81, 81, 219),white);
+    border-radius: 10px;
+    
   }
   
   .chart-data{

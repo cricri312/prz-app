@@ -51,7 +51,9 @@ class Charts extends Component {
 
     };
   }
-
+  componentDidUpdate(PrevProps, prevState) {
+    console.log(PrevProps);
+  }
 
 
   render() {

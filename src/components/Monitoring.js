@@ -40,13 +40,13 @@ class Monitoring extends Component {
                         <div className="col-xl-9 col-lg-9">
                             <div className="row">
                                 <div className="col-xl-6 col-lg-6">
-                                    <News station_name={this.state.station_name}/>
+                                    {/* <News station_name={this.state.station_name}/> */}
                                 </div>
                                 <div className="col-xl-6 col-lg-6">
-                                    <ActualData />
+                                    {/* <ActualData /> */}
                                 </div>
                                 <div className="col-xl-12 col-lg-12">
-                                    <Chart />
+                                    <Chart station={this.state.station_name}/>
                                 </div>
                             </div>
                         </div>
