@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../css/Monitoring.css';
 import Sidebar from './monitoring_components/Sidebar';
-import News from './monitoring_components/News';
-import ActualData from './monitoring_components/ActualData';
 import Chart from './monitoring_components/Chart';
 
 class Monitoring extends Component {
@@ -34,17 +32,11 @@ class Monitoring extends Component {
                 <h1>Dashboard</h1>
                 <div className="container-fluid" >
                     <div className="row">
-                        <div className="col-xl-3 col-lg-3">
+                        <div className="col-xl-12 col-lg-12">
                             <Sidebar stations={this.state.stations_get} onClick={this.onClick} />
                         </div>
-                        <div className="col-xl-9 col-lg-9">
+                        <div className="col-xl-12 col-lg-12">
                             <div className="row">
-                                <div className="col-xl-6 col-lg-6">
-                                    {/* <News station_name={this.state.station_name}/> */}
-                                </div>
-                                <div className="col-xl-6 col-lg-6">
-                                    {/* <ActualData /> */}
-                                </div>
                                 <div className="col-xl-12 col-lg-12">
                                     <Chart station={this.state.station_name}/>
                                 </div>

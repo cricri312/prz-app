@@ -11,9 +11,9 @@ class Chart extends Component {
     }
   }
 
-  getStationMeasurments(station_name) {
+  async getStationMeasurments(station_name) {
     if(station_name !== ''){
-      axios.get(`https://api.rzeki.rzeszow.pl/api/weather/stations/${station_name}/measurements?startDate=2022-05-01T06:22:03Z&stopDate=2022-05-02T06:22:06Z`)
+      await axios.get(`https://api.rzeki.rzeszow.pl/api/weather/stations/${station_name}/measurements?startDate=2022-05-02T06:22:03Z&stopDate=2022-05-02T08:22:06Z`)
       .then(res => {
         this.setState({ test_data: res.data })
       }).catch(err => {
@@ -22,9 +22,9 @@ class Chart extends Component {
     }
     
   }
-  componentDidUpdate(PrevProps, prevState) {
+  async componentDidUpdate(PrevProps, prevState) {
     if (this.props.station !== PrevProps.station) {
-      this.getStationMeasurments(this.props.station);
+     await this.getStationMeasurments(this.props.station);
     }
   }
 

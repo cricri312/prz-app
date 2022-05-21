@@ -51,8 +51,10 @@ class Charts extends Component {
 
     };
   }
-  componentDidUpdate(PrevProps, prevState) {
-    console.log(PrevProps);
+  async componentDidUpdate(PrevProps, prevState) {
+    if(PrevProps.charts_data !== this.props.charts_date){
+      
+    }
   }
 
 

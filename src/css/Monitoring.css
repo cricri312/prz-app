@@ -1,18 +1,67 @@
 .sidebar {
-    align-items: center;
-    justify-content: center;
-  }
-  .chart {
-    background: rgb(70, 110, 211) linear-gradient(white,rgb(81, 81, 219),white);
-    border-radius: 10px;
-    
-  }
-  
-  .chart-data{
-    margin:auto;
-    width: 80%;
-    height: 10vh;
-    background-color: white;
-    color:black;
-    text-align: center;
-  }
+  align-items: center;
+  justify-content: center;
+}
+
+.chart {
+  background: rgb(70, 110, 211) linear-gradient(white, rgb(81, 81, 219), white);
+  border-radius: 10px;
+
+}
+
+.chart-data {
+  margin: auto;
+  width: 80%;
+  height: 10vh;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+.sidebar {
+  white-space: nowrap;
+  overflow: auto;
+}
+
+/*Hide scrollbar for Chrome*/
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.sidebar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#sliderWrapper {
+  left: 40px;
+  width: calc(100% - 80px);
+  height: 100%;
+  position: relative;
+}
+
+#next {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background: #7aadf8;
+  opacity: 0.8;
+  z-index: 1;
+}
+#prev {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: #7aadf8;
+  opacity: 0.8;
+  z-index: 1;
+}
+#imageSlider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#imageSlider img{width:100px; height:100px;}
+::-webkit-scrollbar {
+  display: none;
+}
