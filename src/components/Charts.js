@@ -7,22 +7,22 @@ class Charts extends Component {
     this.state = {
           
       series: [{
-        name: 'Website Blog',
+        name: 'River',
         type: 'area',
-        data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
-      }, {
-        name: 'Social Media',
-        type: 'line',
         data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+      }, {
+        name: 'Temperature',
+        type: 'line',
+        data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
       }],
       options: {
         // chart: {
         //   height: 350,
         //   type: 'line',
         // },
-        stroke: {
-          width: [0, 4]
-        },
+        // stroke: {
+        //   width: [0, 4]
+        // },
         title: {
           text: 'Traffic Sources'
         },
@@ -52,8 +52,15 @@ class Charts extends Component {
     };
   }
   async componentDidUpdate(PrevProps, prevState) {
-    if(PrevProps.charts_data !== this.props.charts_date){
-      
+    if(PrevProps.charts_data !== this.props.charts_data){
+      let date= [];
+      let temperature = [];
+      this.props.charts_data.forEach(element => {
+        date.push(element.CreatedAt);
+        temperature.push(element.temperature);
+      });
+      this.setState({options:{labels: date}});
+      this.setState({series:[{data:temperature}]});
     }
   }
 

@@ -4,14 +4,14 @@
 }
 
 .chart {
-  background: rgb(70, 110, 211) linear-gradient(white, rgb(81, 81, 219), white);
+  background: rgb(70, 110, 211) linear-gradient(white, #7aadf8, white);
   border-radius: 10px;
 
 }
 
 .chart-data {
   margin: auto;
-  width: 80%;
+  width: 100%;
   height: 10vh;
   background-color: white;
   color: black;
