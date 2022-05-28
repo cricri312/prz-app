@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons';
 import { BrowserView } from 'react-device-detect';
+import Calendar from './sidebar_components/Calendar';
+
 class Sidebar extends Component {
 
 
@@ -37,7 +39,7 @@ class Sidebar extends Component {
         <div className="sidebar" id='sliderWrapper'>
           {this.props.stations.map((station, index) => <button key={index} onClick={() => this.showAlert(station.code_name)} type="button" className="btn btn-outline-primary">{station.name}</button>)}
         </div>
-
+        <Calendar />
       </div>
     );
   }

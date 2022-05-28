@@ -13,8 +13,9 @@ class Chart extends Component {
 
   async getStationMeasurments(station_name) {
     if(station_name !== ''){
-      await axios.get(`https://api.rzeki.rzeszow.pl/api/weather/stations/${station_name}/measurements?startDate=2022-05-02T06:22:03Z&stopDate=2022-05-02T08:22:06Z`)
+      await axios.get(`https://api.rzeki.rzeszow.pl/api/weather/stations/${station_name}/measurements?startDate=2022-05-03T06:22:03Z&stopDate=2022-05-22T08:22:06Z`)
       .then(res => {
+        console.log(res.data);
         this.setState({ test_data: res.data })
       }).catch(err => {
         console.log(err);
