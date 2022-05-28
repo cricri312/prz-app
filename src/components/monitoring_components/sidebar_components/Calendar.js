@@ -11,6 +11,7 @@ class Calendar extends Component {
       time: new Date(),
       is_open: false,
       start_time: new Date("2022-03-01"),
+      end_date: 'End Date'
     }
   }
 
@@ -20,7 +21,7 @@ class Calendar extends Component {
 
   handleSelect = (time) => {
     const getTime = this.dateFormat(time)
-    this.setState({ is_open: false})
+    this.setState({ is_open: false,end_date:getTime})
     this.props.datePicker(getTime);
     
   }
@@ -39,7 +40,7 @@ class Calendar extends Component {
     return (
       <div className='sidebar-calendar'>
         <div>
-          <FcCalendar size={33} style={{ cursor: "pointer" }} onClick={this.openDatePicker} />End Date
+          <FcCalendar size={33} style={{ cursor: "pointer" }} onClick={this.openDatePicker} />{this.state.end_date}
         </div>
         <DatePicker
           value={this.state.time}
