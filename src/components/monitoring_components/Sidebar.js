@@ -22,7 +22,9 @@ class Sidebar extends Component {
   loopPrev() {
     document.querySelector('#sliderWrapper').scrollTo(0, 0);
   }
-
+  datePicker = (dataFromChild) => {
+    this.props.passDatePicker(dataFromChild);
+}
   render() {
     return (
       <div id='imageSlider'>
@@ -39,7 +41,7 @@ class Sidebar extends Component {
         <div className="sidebar" id='sliderWrapper'>
           {this.props.stations.map((station, index) => <button key={index} onClick={() => this.showAlert(station.code_name)} type="button" className="btn btn-outline-primary">{station.name}</button>)}
         </div>
-        <Calendar />
+        <Calendar datePicker={this.datePicker}/>
       </div>
     );
   }
