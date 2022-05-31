@@ -10,7 +10,7 @@ class Calendar extends Component {
     this.state = {
       time: new Date(),
       is_open: false,
-      start_time: new Date("2022-03-01"),
+      start_time: new Date("2022-03-03"),
       end_date: 'End Date'
     }
   }
@@ -43,7 +43,7 @@ class Calendar extends Component {
           <FcCalendar size={33} style={{ cursor: "pointer" }} onClick={this.openDatePicker} />{this.state.end_date}
         </div>
         <DatePicker
-          value={this.state.time}
+          value={this.state.start_time}
           isOpen={this.state.is_open}
           onSelect={this.handleSelect}
           onCancel={this.handleCancel}
