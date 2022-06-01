@@ -7,37 +7,28 @@ class BasicChart extends Component {
     this.state = {
           
       series: [{
-        name: '',
+        name: this.props.chart_data_label_temperature,
+        type: 'area',
+        data: []
+      },
+      {
+        name: this.props.chart_data_label_precipitation,
         type: 'area',
         data: []
       }],
       options: {
-
         title: {
           text: 'Chart'
         },
         dataLabels: {
-          enabled: true,
-          enabledOnSeries: [1]
+          enabled: false,
+          enabledOnSeries: [0]
         },
         labels: [],
         xaxis: {
           type: 'datetime'
-        },
-        yaxis: [{
-          title: {
-            text: '',
-          },
-        
-        }, {
-          opposite: false,
-          title: {
-            text: ''
-          }
-        }]
+        }
       },
-    
-
 
     };
   }
@@ -45,14 +36,18 @@ class BasicChart extends Component {
     if(PrevProps.charts_data !== this.props.charts_data){
       let date= [];
       let temperature = [];
+      let rain = [];
       this.props.charts_data.forEach(element => {
         date.push(element.CreatedAt);
         if(element.temperature.toFixed(2) > 100) temperature.push((element.temperature.toFixed(2) - 273.15).toFixed(2));
         else temperature.push(element.temperature.toFixed(2));
+        rain.push(element.precipitation<0?1:element.precipitation)
       });
       
       this.setState({options:{labels: date,title:{text:this.props.chart_title}}});
-      this.setState({series:[{data:temperature,name:this.props.chart_data_label}]});
+      //this.setState({series:[{data:temperature}]});
+      this.setState(this.state.series[0].data = temperature)
+      this.setState(this.state.series[1].data = rain)
     }
   }
 
