@@ -56,7 +56,7 @@ class Chart extends Component {
           let res_data = []
           res.data.forEach(element => {
             //res_data.push({x:element.prediction_time,y:element.level})
-            res_data.push([element.prediction_time, (element.level / 10).toFixed(2)]);
+            res_data.push([element.prediction_time, (element.level).toFixed(2)]);
           });
           // this.setState(this.state.dataSet = res_data)
           this.setState({ riverPrediction: res_data })
