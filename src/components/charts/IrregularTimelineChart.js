@@ -24,7 +24,7 @@ class IrregularTimelineChart extends Component {
           stacked: false,
           height: 350,
           zoom: {
-            enabled: false
+            enabled: true
           },
         },
         dataLabels: {

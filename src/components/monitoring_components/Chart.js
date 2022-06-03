@@ -3,6 +3,7 @@ import BasicChart from '../charts/BasicChart'
 import IrregularTimelineChart from '../charts/IrregularTimelineChart';
 import { UnmountClosed } from 'react-collapse';
 import axios from 'axios';
+import {getData} from './../../utils/util'
 
 class Chart extends Component {
 
@@ -34,48 +35,33 @@ class Chart extends Component {
     }
     return 0;
   }
-  async getRiverMeasurments(station_name) {
-    if (station_name !== '') {
-      await axios.get(`https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/measurements`)
-        .then(res => {
-          let res_data = []
-          res.data.forEach(element => {
-            //res_data.push({x:element.CreatedAt,y:element.level})
-            res_data.push([element.CreatedAt, element.level]);
-          });
-          this.setState({ dataSet: res_data })
-        }).catch(err => {
-          console.log(err);
-        })
-    }
+
+  async setStateData(data,parameters,state_name){
+    let result = [];
+    data.data.forEach(element => {
+      result.push([element[parameters[0]], (element[parameters[1]]).toFixed(2)])
+    });
+    this.setState({[state_name]:result})
   }
-  async getRiverMeasurmentPredictions(station_name) {
-    if (station_name !== '') {
-      await axios.get(`https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/predictions`)
-        .then(res => {
-          let res_data = []
-          res.data.forEach(element => {
-            //res_data.push({x:element.prediction_time,y:element.level})
-            res_data.push([element.prediction_time, (element.level).toFixed(2)]);
-          });
-          // this.setState(this.state.dataSet = res_data)
-          this.setState({ riverPrediction: res_data })
-        }).catch(err => {
-          console.log(err);
-        })
-    }
-  }
+
   async componentDidUpdate(PrevProps, prevState) {
     if ((this.props.station !== PrevProps.station) || (this.props.end_date !== PrevProps.end_date)) {
-      let station_measurments = await this.getStationMeasurments(this.props.station, this.props.end_date);
-      await this.getRiverMeasurments(this.props.station);
-      await this.getRiverMeasurmentPredictions(this.props.station);
-      let x = this.state.dataSet;
-      let y = this.state.riverPrediction;
+      let station_name = this.props.station;
+      let river_url = `https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/measurements?limit=100`;
+      let prediction_url = `https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/predictions?limit=100`;
+
+      const river_data = await getData(river_url).then(response=>{return response})
+      const prediction_data = await getData(prediction_url).then(response=>{return response})
+
+      await this.setStateData(river_data,['CreatedAt','level'],'dataSet');
+      await this.setStateData(prediction_data,['prediction_time','level'],'riverPrediction')
+      let actual = this.state.dataSet;
+      let prediction = this.state.riverPrediction;
       let charts_data = [];
-      charts_data.push(x);
-      charts_data.push(y);
+      charts_data.push(actual);
+      charts_data.push(prediction);
       this.setState({ charts_data: charts_data })
+      let station_measurments = await this.getStationMeasurments(this.props.station, this.props.end_date);
       if(station_measurments === 1 ){this.setState({isOpen:true})}
     }
   }
@@ -92,9 +78,7 @@ class Chart extends Component {
               chart_data_label_temperature={'Temperature[°]'}
               chart_data_label_precipitation={'Precipitation[cm]'} />
           </UnmountClosed>
-          <IrregularTimelineChart charts_data={this.state.charts_data} chart_title={'Actual and Prediction'}
-
-          />
+          <IrregularTimelineChart charts_data={this.state.charts_data} chart_title={'Actual and Prediction'}/>
         </div>
       </div>
 

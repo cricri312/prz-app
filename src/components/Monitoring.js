@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import '../css/Monitoring.css';
 import Sidebar from './monitoring_components/Sidebar';
 import Chart from './monitoring_components/Chart';
+import {getData} from './../utils/util'
 
 class Monitoring extends Component {
 
@@ -16,20 +16,21 @@ class Monitoring extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://api.rzeki.rzeszow.pl/api/weather/stations/')
-            .then(res => {
-                const stations_get = res.data.stations;
-                this.setState({ stations_get });
-            }).catch(err => {
-                console.log(err);
-            })
+        let stations_get = [];
+        getData('https://api.rzeki.rzeszow.pl/api/weather/stations/').then(response=>{
+            stations_get = response.data.stations
+            this.setState({ stations_get });
+        });
+        
     }
+    
     onClick = (dataFromChild) => {
         this.setState({station_name:dataFromChild})
-   }
-   passDatePicker = (dataFromChild) => {
-    this.setState({end_date:dataFromChild});
-}
+    }
+
+    passDatePicker = (dataFromChild) => {
+        this.setState({end_date:dataFromChild});
+    }
     render() {
         return (
             <div>
