@@ -47,8 +47,11 @@ class Chart extends Component {
   async componentDidUpdate(PrevProps, prevState) {
     if ((this.props.station !== PrevProps.station) || (this.props.end_date !== PrevProps.end_date)) {
       let station_name = this.props.station;
-      let river_url = `https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/measurements?limit=100`;
-      let prediction_url = `https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/predictions?limit=100`;
+      let date = new Date();
+      date.setDate(date.getDate() - 2);
+      let utc = date.toJSON().slice(0,10).replace(/-/g,'-');
+      let river_url = `https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/measurements?startDate=${utc}T06:22:03Z&stopDate=2022-09-29T06:22:06Z`;
+      let prediction_url = `https://api.rzeki.rzeszow.pl/api/river/stations/${station_name}/predictions?startDate=${utc}T06:22:03Z&stopDate=2022-09-29T06:22:06Z`;
 
       const river_data = await getData(river_url).then(response=>{return response})
       const prediction_data = await getData(prediction_url).then(response=>{return response})
